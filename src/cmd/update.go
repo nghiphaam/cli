@@ -74,6 +74,7 @@ func Update(currentVersion string) bool {
 	_, err = io.Copy(out, resp2.Body)
 	if err != nil {
 		resp2.Body.Close()
+		out.Close()
 		spinner.Fail("Failed to download Spicetify")
 		utils.Fatal(err)
 	}
